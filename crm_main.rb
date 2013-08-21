@@ -7,7 +7,6 @@ require './contact.rb'
 #main menu
 
 def print_main_menu
- 
   puts "[1] Add a new contact".red
   puts "[2] Modify an existing contact".red
   puts "[3] Delete a contact".red
@@ -44,9 +43,9 @@ def do_the_things
 		when 1
 			add_contact
 		when 2
-			puts "You chose 2!"
+			@db.modify_a_contact
 		when 3
-			puts "You chose 3!"
+			@db.delete_a_contact
 		when 4
 			@db.display_all_contacts
 		when 5

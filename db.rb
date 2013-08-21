@@ -22,17 +22,47 @@ class Database
 	puts "Please enter a name, id number, or email address"
   	attribute=gets.chomp
   	@contacts_array.each do |contact|
-			if (contact.id.downcase == attribute.downcase) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
+			if (contact.id.to_s == attribute) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
 				contact.display_single_contact
 			end
 		end
   end
 
+
   def delete_a_contact
-  	
+  	puts "Please enter a name, id number, or email address"
+  	attribute=gets.chomp	
+  		@contacts_array.each do |contact|
+			
+			if (contact.id.to_s == attribute) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
+				puts "Are you sure you want to delete #{contact.firstname} #{contact.lastname}? Y/N"
+				print">>"
+					answer=gets.chomp
+					if answer=="Y"
+						@contacts_array.delete(contact)
+					elsif answer =="N"
+						puts "okay I won't delete it"
+						return false
+					else
+						puts "Please put Y or N"
+					end
+			else
+				puts "Sorry, I couldn't find any contact with the attribute: #{attribute}"
+				return false
+			end
+		end
   end
 
+
   def modify_a_contact
+  	puts "Please enter a name, id number, or email address"
+  	attribute=gets.chomp
+  	@contacts_array.each do |contact|
+			if (contact.id.to_s == attribute) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
+				puts "Modifying the following contact"
+				contact.display_single_contact
+			end
+		end
   	
   end
 
