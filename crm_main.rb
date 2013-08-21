@@ -1,56 +1,7 @@
 #requires
 
 require 'colorize'
-
-#database class
-
-class Database
-	def initialize
-		@contacts_arr=[]
-	end
-
-def add_contact(contact)
-	@contacts_arr<<contact
-end
-
-end
-
-class Contact
-  @@contact_index = 1000
-
-  attr_accessor :id, :firstname, :lastname, :email, :note
-
-  def initialize(first_name, last_name, email, note)
-    @id=@@contact_index
-    @firstname = firstname
-    @lastname = lastname
-    @email = email
-    @note = note
-    @@contact_index +=1
-  end
-
-  def display_single_contact
-		puts "ID: #{@id}"
-		puts "First Name: #{@firstname}"
-		puts "Last Name: #{@lastname}"
-		puts "Email Address: #{@email}"
-		puts "Notes: #{@notes}"
-  end
-
-  def display_all_contacts
-  end
-
-  def select_a_contact
-  end
-
-  def delete_a_contact
-  end
-
-  def modify_a_contact
-  end
-
-end
-
+db=Database.new
 
 #main menu
 
@@ -82,14 +33,11 @@ def add_contact
 	note=gets.chomp
 	contact=Contact.new(firstname,lastname,email,note)
 	db.add(contact)
-	puts contact
+	
 	puts "I added #{firstname} #{lastname} to the database"
 	puts"\n"
 end
 
-def display_contacts
-	Contact.display
-end
 
 def do_the_things
 	case @user_selected
@@ -118,7 +66,6 @@ def main_loop
 end
 
 puts "\e[H\e[2J"
-db=Database.new
 main_loop
 
 
