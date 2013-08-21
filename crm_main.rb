@@ -1,7 +1,8 @@
 #requires
 
 require 'colorize'
-db=Database.new
+require './db.rb'
+require './contact.rb'
 
 #main menu
 
@@ -32,8 +33,7 @@ def add_contact
 	puts "Lastly, do you have a note for the contact?"
 	note=gets.chomp
 	contact=Contact.new(firstname,lastname,email,note)
-	db.add(contact)
-	
+	@db.add_a_contact(contact)
 	puts "I added #{firstname} #{lastname} to the database"
 	puts"\n"
 end
@@ -48,7 +48,7 @@ def do_the_things
 		when 3
 			puts "You chose 3!"
 		when 4
-			display_contacts
+			@db.display_all_contacts
 		when 5
 			puts "You chose 5!"
 		when 6 
@@ -66,6 +66,7 @@ def main_loop
 end
 
 puts "\e[H\e[2J"
+@db=Database.new
 main_loop
 
 

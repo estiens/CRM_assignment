@@ -13,11 +13,11 @@ class Contact
   end
 
   def display_single_contact
-		puts "ID: #{@id}"
-		puts "First Name: #{@firstname}"
-		puts "Last Name: #{@lastname}"
-		puts "Email Address: #{@email}"
-		puts "Notes: #{@note}"
+		puts "\nID:\t\t#{@id}"
+		puts "First Name:\t#{@firstname}"
+		puts "Last Name:\t#{@lastname}"
+		puts "Email Address:\t#{@email}"
+		puts "Notes:\t\t#{@note}\n"
   end
 
   
