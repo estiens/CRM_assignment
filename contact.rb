@@ -18,6 +18,7 @@ class Contact
 		puts "Last Name:\t#{@lastname}"
 		puts "Email Address:\t#{@email}"
 		puts "Notes:\t\t#{@note}\n"
+    puts
   end
 
   

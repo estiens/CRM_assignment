@@ -12,7 +12,7 @@ def print_main_menu
   puts "[2] Modify an existing contact".red
   puts "[3] Delete a contact".red
   puts "[4] Display all the contacts".red
-  puts "[5] Display an attribute".red
+  puts "[5] Search for contacts by attribute".red
   puts "[6] Exit".red
   puts
   print "Enter a number: ".black
@@ -50,7 +50,7 @@ def do_the_things
 		when 4
 			@db.display_all_contacts
 		when 5
-			puts "You chose 5!"
+			@db.select_a_contact
 		when 6 
 			puts "Bye now!"
 			exit

@@ -5,7 +5,6 @@ class Database
 
 	def initialize
 		@contacts_array = Array.new
-		puts "sanity check: database initialized".yellow
 	end
 
 	def add_a_contact(contact)
@@ -13,19 +12,33 @@ class Database
 	end
 
 	def display_all_contacts
-		puts "Sorry, nothing in the database yet\n" if @contacts_array.empty?
+		check_database
 		@contacts_array.each do |contact|
 			contact.display_single_contact
 		end
 	end
 
   def select_a_contact
+	puts "Please enter a name, id number, or email address"
+  	attribute=gets.chomp
+  	@contacts_array.each do |contact|
+			if (contact.id.downcase == attribute.downcase) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
+				contact.display_single_contact
+			end
+		end
   end
 
   def delete_a_contact
+  	
   end
 
   def modify_a_contact
+  	
+  end
+
+  def check_database
+  	puts "Sorry, nothing in the database yet\n" if @contacts_array.empty?
+
   end
 
 end
