@@ -7,8 +7,19 @@ class Database
 		@contacts_array = Array.new
 	end
 
-	def add_a_contact(contact)
+	def add_a_contact
+		puts "Great, let's add a contact. What's the first name of your contact?"
+		firstname=gets.chomp
+		puts "And the last name?"
+		lastname=gets.chomp
+		puts "Email?"
+		email=gets.chomp
+		puts "Lastly, do you have a note for the contact?"
+		note=gets.chomp
+		contact=Contact.new(firstname,lastname,email,note)
 		@contacts_array << contact
+		puts "I added #{firstname} #{lastname} to the database"
+		puts"\n"
 	end
 
 	def display_all_contacts

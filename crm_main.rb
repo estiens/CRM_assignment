@@ -22,26 +22,12 @@ def main_menu
   @user_selected = gets.to_i
 end
 
-def add_contact
-	puts "Great, let's add a contact. What's the first name of your contact?"
-	firstname=gets.chomp
-	puts "And the last name?"
-	lastname=gets.chomp
-	puts "Email?"
-	email=gets.chomp
-	puts "Lastly, do you have a note for the contact?"
-	note=gets.chomp
-	contact=Contact.new(firstname,lastname,email,note)
-	@db.add_a_contact(contact)
-	puts "I added #{firstname} #{lastname} to the database"
-	puts"\n"
-end
-
+#user chooser
 
 def do_the_things
 	case @user_selected
 		when 1
-			add_contact
+			@db.add_a_contact
 		when 2
 			@db.modify_a_contact
 		when 3
@@ -55,7 +41,7 @@ def do_the_things
 			exit
 		else 
 			puts "Sorry, not a valid choice!\nPlease choose again.\n\n"
-		end 
+	end 
 	main_loop
 end
 
