@@ -19,17 +19,22 @@ class Database
 	end
 
   def select_a_contact
-	puts "Please enter a name, id number, or email address"
+	check_database
+  	if ! @contacts_array.empty?
+  	puts "Please enter a name, id number, or email address"
   	attribute=gets.chomp
   	@contacts_array.each do |contact|
 			if (contact.id.to_s == attribute) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
 				contact.display_single_contact
 			end
 		end
+	end
   end
 
 
   def delete_a_contact
+  	check_database
+  	if ! @contacts_array.empty?
   	puts "Please enter a name, id number, or email address"
   	attribute=gets.chomp	
   		@contacts_array.each do |contact|
@@ -51,10 +56,13 @@ class Database
 				return false
 			end
 		end
+	end	
   end
 
 
   def modify_a_contact
+  	check_database
+  	if ! @contacts_array.empty?
   	puts "Please enter a name, id number, or email address"
   	attribute=gets.chomp
   	@contacts_array.each do |contact|
@@ -63,11 +71,11 @@ class Database
 				contact.display_single_contact
 			end
 		end
-  	
+  	end
   end
 
   def check_database
-  	puts "Sorry, nothing in the database yet\n" if @contacts_array.empty?
+  	puts "Sorry, nothing in the database yet\n\n" if @contacts_array.empty?
 
   end
 
