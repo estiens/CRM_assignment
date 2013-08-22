@@ -71,23 +71,53 @@ class Database
   end
 
 
-  def modify_a_contact
-  	check_database
-  	if ! @contacts_array.empty?
+def modify_a_contact
+  check_database
+  if ! @contacts_array.empty?
   	puts "Please enter a name, id number, or email address"
   	attribute=gets.chomp
+  	
   	@contacts_array.each do |contact|
-			if (contact.id.to_s == attribute) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
+		if (contact.id.to_s == attribute) || (contact.firstname.downcase == attribute.downcase) || (contact.lastname.downcase == attribute.downcase) || (contact.email.downcase == attribute.downcase)
 				puts "Modifying the following contact"
 				contact.display_single_contact
-			end
+				puts "Is that what you want? Y/N"
+				print ">> "
+				confirmation = gets.chomp.downcase
+					if confirmation == "y"
+						puts "What attribute would you like to modify? [F]irst Name, [L]ast Name, [E]mail, or [N]ote?"
+						attrchoice=gets.chomp.downcase
+							case attrchoice
+							when "f"
+								puts "What's the new first name?"
+								firstname=gets.chomp
+								contact.firstname=firstname
+							when "l"
+								puts "What's the new last name?"
+								lastname=gets.chomp
+								contact.lastname=lastname							
+							when "e"
+								puts "What's the new email?"
+								email=gets.chomp
+								contact.email=email
+							when "n"
+								puts "What's the new note?"
+								note=gets.chomp
+								contact.note=note
+							else "Sorry, that's not a valid choice."
+							end
+					elsif confirmation == "n"
+						puts "okay, returning to main menu"
+					else 
+						puts "please say Y or N"
+					end
+		end			
 		end
-  	end
   end
+end
 
-  def check_database
+def check_database
   	puts "Sorry, nothing in the database yet\n\n" if @contacts_array.empty?
-
-  end
+end
 
 end
